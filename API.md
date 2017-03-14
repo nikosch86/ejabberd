@@ -571,7 +571,7 @@ modules:
 * `gen_mod:start_child(Module, Host, Opts)` where `Module` is a name of
 a stateful module. This function should be called as the last function
 inside of `Module:start/2`. It will create a `gen_server` process with
-a registered name and will attach it to `gen_mod_sup` supervisor.
+a registered name and will attach it to `ejabberd_gen_mod_sup` supervisor.
 * `gen_mod:stop_child(Module, Host)` should be used inside of
 `Module:stop/1` function and will terminate the corresponding
 registered `gen_server` process.
