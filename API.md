@@ -459,6 +459,7 @@ modified or not) in the form of `NewAcc` or `{stop, NewAcc}` where
 `NewAcc` is the new accumulator value. A function associated with a
 hook without an accumulator is called as `Module:Function(Arg1,
 Arg2, ...)`. All returning values except `stop` are ignored.
+
 > **WARNING**: a `Function` with the corresponding arity should be
 > exported by a `Module`
 
