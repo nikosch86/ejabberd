@@ -513,7 +513,7 @@ There is a helper script in `tools/hook_deps.sh`. You can use it to
 check hook correctness and find mishooked functions. The script also
 generates a module `src/hooks_type_test.erl` from where you can learn
 about existing hooks and check execution order. You can place your code
-inside `src` directory, recompile ejabberd and run:
+inside `src` directory (if any), recompile ejabberd and run:
 ```
 $ tools/hook_deps.sh src
 ```
@@ -546,7 +546,7 @@ module cleanup: most likely unregistering hooks and IQ handlers. The
 returning value is ignored
 * `Module:reload(Host, NewOpts, OldOpts)` where `NewOpts` and `OldOpts`
 is the new and old options list respectively. The function is called
-every time a module is being reloaded. This is an optional callback,
+every time a module is being reloaded. This is the only optional callback,
 thus, if undefined, the module will be reloaded by calling sequentially
 `Module:stop/1` and `Module:start/2`.
 * `Module:depends(Host, Opts)` where the meaning of the arguments is
