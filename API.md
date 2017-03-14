@@ -706,13 +706,18 @@ Inspect exported functions of
 
 `jid.erl` module provides functions to work with XMPP addresses (aka "JIDs"). 
 The most notable functions in this module are:
-* `decode/1`: decodes `binary()` into `#jid{}` record
-* `encode/1`: encodes JID represented as `#jid{}` into `binary()`
-* `jid:remove_resource/1`: removes resource part of a `#jid{}`
-* `jid:replace_resource/2`: replaces resource part of a `#jid{}`
-* `jid:tolower/1`: transforms `#jid{}` into `{U, S, R}` format, where
-`U`, `S` and `R` are stringprepped version of a nodepart, namepart and resourcepart
-respectively.
+* `decode(Input :: binary()) -> jid()`:
+  decodes binary data into `#jid{}` record. Fails with `{bad_jid, Input}` otherwise.
+* `encode/(JID :: jid() | ljid()) -> binary()`:
+  encodes `JID` into binary data
+* `remove_resource(JID :: jid() | ljid()) -> jid() | ljid()`:
+  removes resource part of a `JID`
+* `replace_resource(JID :: jid() | ljid()) -> jid() | ljid()`:
+  replaces resource part of a `JID`
+* `tolower(JID :: jid() | ljid()) -> ljid()`:
+  transforms `JID` into `ljid()`, i.e. into `{U, S, R}` format,
+  where `U`, `S` and `R` are stringprepped version of a nodepart,
+  namepart and resourcepart respectively.
 
 Inspect exported functions of
 [jid.erl](https://github.com/processone/xmpp/blob/master/src/xmpp.erl)
