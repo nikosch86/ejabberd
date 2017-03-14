@@ -722,11 +722,11 @@ The most notable functions in this module are:
   encodes `JID` into binary data
 * `remove_resource(JID :: jid() | ljid()) -> jid() | ljid()`:
   removes resource part of a `JID`
-* `replace_resource(JID :: jid() | ljid()) -> jid() | ljid()`:
+* `replace_resource(JID :: jid() | ljid(), Resource :: binary()) -> jid() | ljid()`:
   replaces resource part of a `JID`
 * `tolower(JID :: jid() | ljid()) -> ljid()`:
   transforms `JID` into `ljid()` representation
-* `make(LJID :: ljid()) -> jid()`:
+* `make(LJID :: ljid() | jid()) -> jid()`:
   transforms `LJID` into `jid()` representation
 
 Inspect exported functions of
