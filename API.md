@@ -206,7 +206,7 @@ authentication is completed
 Roughly, they represent an intermediate (or "glue") code between
 `XMPP Stream Layer` and `Routing Layer` for inbound XMPP streams.
 
-`ejabberd_s2s_out.erl` is described in another section.
+`ejabberd_s2s_out.erl` is described [elsewhere](#ejabberd_s2s-and-ejabberd_s2s_out)
 
 ### Routing Layer
 
