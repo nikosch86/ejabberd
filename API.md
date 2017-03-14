@@ -415,9 +415,9 @@ specified order.
 
 For example, when a packet is received on a client connection, ejabberd
 runs `user_send_packet` hook. Several modules need to listen for an
-event (a packet and a C2S state) represented by this hook, so they
-associate their internal functions with it: `mod_ping.erl` associates
-`user_send/1` function, `mod_privacy.erl` associates
+event represented by this hook (that is, a packet and a C2S state),
+so they associate their internal functions with it: `mod_ping.erl`
+associates `user_send/1` function, `mod_privacy.erl` associates
 `user_send_packet/1` function and so on. The event is passed as an
 argument to the "hooked" functions, thus, the function from
 `mod_ping.erl` will be called as `mod_ping:user_send({Stanza,
