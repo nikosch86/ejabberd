@@ -344,7 +344,12 @@ described in [ejabberd_sm](#ejabberd_sm).
 
 An IQ handler is registered as:
 ```erlang
-gen_iq_handler:add_iq_handler(Type, Host, Namespace, Module, Function, IQDisc)
+gen_iq_handler:add_iq_handler(Type :: ejabberd_local | ejabberd_sm,
+                              Host :: binary(),
+                              Namespace :: binary(),
+                              Module :: module(),
+                              Function :: atom(),
+                              IQDisc :: gen_iq_handler:type()) -> ok
 ```
 where:
 * `Type` is `ejabberd_local` for `local` handlers or `ejabberd_sm` for
@@ -364,7 +369,9 @@ further processing stops.
 
 If a handler is no longer needed it should be unregistered as:
 ```erlang
-gen_iq_handler:remove_iq_handler(Type, Host, Namespace)
+gen_iq_handler:remove_iq_handler(Type :: ejabberd_local | ejabberd_sm,
+                                 Host :: binary(),
+                                 Namespace :: binary()) -> ok
 ```
 with the same meaning of the arguments.
 
@@ -447,7 +454,11 @@ scope.
 A function gets associated with a local hook as follows (the type of a
 hook doesn't matter):
 ```erlang
-ejabberd_hooks:add(Hook, Host, Module, Function, Seq)
+ejabberd_hooks:add(Hook :: atom(),
+                   Host :: binary(),
+                   Module :: module(),
+                   Function :: atom(),
+                   Seq :: integer() -> ok
 ```
 where:
 * `Hook` is a hook name
@@ -471,7 +482,10 @@ Arg2, ...)`. All returning values except `stop` are ignored.
 A function for a global hook gets associated as follows (the type of a
 hook doesn't matter):
 ```erlang
-ejabberd_hooks:add(Hook, Module, Function, Seq)
+ejabberd_hooks:add(Hook :: atom(),
+                   Module :: module(),
+                   Function :: atom(),
+                   Seq :: integer()) -> ok
 ```
 with the same meaning of the arguments. Note that `Host` argument is
 omitted in this case.
@@ -500,8 +514,8 @@ check hook correctness and find mishooked functions. The script also
 generates a module `src/hooks_type_test.erl` from where you can learn
 about existing hooks and check execution order. You can place your code
 inside `src` directory, recompile ejabberd and run:
-``` $
-tools/hook_deps.sh src
+```
+$ tools/hook_deps.sh src
 ```
 
 ## Modules
