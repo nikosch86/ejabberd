@@ -175,7 +175,7 @@ structures (records) defined in
 > `ejabberd_s2s_in.erl`, `ejabberd_service.erl` and `ejabberd_s2s_out.erl`.
 > This has lead to unmaintainable monolithic spaghetti code with a lot
 > of code duplication between these modules. It's believed introducing
-> `xmpp_stream_in.erl` and `xmpp_stream_out.erl` modules now solve this
+> `xmpp_stream_in.erl` and `xmpp_stream_out.erl` modules now solves this
 > problem.
 
 During these procedures `xmpp_stream_in.erl` calls functions from its
@@ -197,13 +197,14 @@ The only its callback module is `ejabberd_s2s_out.erl`.
 
 These are modules of `xmpp_stream_in` behaviour. The only purpose of
 these modules is to provide callback functions for `xmpp_stream_in.erl`
-module. Examples of such callback functions are: `tls_enabled/1` (tells
-whether or not TLS is enabled in the configuration),
-`check_password_fun/1` (provides a function for SASL authentication),
-`handle_authenticated_packet/2` (what to do with packets after
-authentication is completed) and so on. Roughly, they represent an
-intermediate (or "glue") code between `XMPP Stream Layer` and
-`Routing Layer` for inbound XMPP streams.
+module. Examples of such callback functions are:
+* `tls_enabled/1`: tells whether or not TLS is enabled in the configuration
+* `check_password_fun/1`: provides a function for SASL authentication
+* `handle_authenticated_packet/2`: what to do with packets after
+authentication is completed
+
+Roughly, they represent an intermediate (or "glue") code between
+`XMPP Stream Layer` and `Routing Layer` for inbound XMPP streams.
 
 `ejabberd_s2s_out.erl` is described in another section.
 
