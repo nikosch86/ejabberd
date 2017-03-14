@@ -8,12 +8,12 @@ Table of Contents:
    2. [Requirements](#requirements)
    3. [Version](#version)
 2. [Coding style convention](#coding-style-convention)
-3. [Start-up procedure](#star-up-procedure)
+3. [Start-up procedure](#start-up-procedure)
 4. [Core](#core)
-   1. [Network Layer](#network-Layer)
+   1. [Network Layer](#network-layer)
    2. [XMPP Stream Layer](#xmpp-stream-layer)
       1. [ejabberd_c2s, ejabberd_s2s_in and ejabberd_service](#ejabberd_c2s,-ejabberd_s2s_in-and-ejabberd_service)
-   3. [Routing Layer](#Routing-Layer)
+   3. [Routing Layer](#routing-layer)
       1. [ejabberd_router](#ejabberd_router)
       2. [ejabberd_local](#ejabberd_local)
       3. [ejabberd_sm](#ejabberd_sm)
@@ -25,14 +25,14 @@ Table of Contents:
    2. [Hooks](#hooks)
 6. [Modules](#modules)
    1. [gen_mod behaviour](#gen_mod-behaviour)
-   2. [Stateful modules](#stateful_modules)
-   3. [gen_mod.erl](#gen_mod.erl)
+   2. [Stateful modules](#stateful-modules)
+   3. [gen_mod module](#gen_mod-module)
 7. [Configuration](#configuration)
    1. [Validation](#validation)
    2. [Fetching options](#fetching-options)
 8. [Using XMPP library](#using-xmpp-library)
-   1. [xmpp.erl](#xmpp.erl)
-   2. [jid.erl](#jid.erl)
+   1. [xmpp module](#xmpp-module)
+   2. [jid module](#jid-module)
 
 ## Introduction
 
@@ -582,7 +582,7 @@ start(Host, Opts) ->
 There is a plenty of examples of modules: pick up any file starting
 with `mod_` inside `src` directory.
 
-### gen_mod.erl
+### gen_mod module
 
 Module `gen_mod.erl` has various useful functions to work with modules,
 the most notable are:
@@ -651,7 +651,7 @@ is not defined in the config.
 
 ## Using XMPP library
 
-### xmpp.erl
+### xmpp module
 
 Prior to version 16.12, ejabberd used to operate with `#xmlel{}`
 packets directly: [fast_xml](https://github.com/processone/fast_xml)
@@ -682,7 +682,7 @@ Inspect exported functions of
 [xmpp.erl](https://github.com/processone/xmpp/blob/master/src/xmpp.erl)
 -- you're likely to use most of them.
 
-### jid.erl
+### jid module
 
 `jid.erl` module provides functions to work with XMPP addresses (aka "JIDs"). 
 The most notable functions in this module are:
