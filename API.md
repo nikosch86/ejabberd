@@ -704,10 +704,20 @@ Inspect exported functions of
 
 ### jid module
 
-`jid.erl` module provides functions to work with XMPP addresses (aka "JIDs"). 
+`jid.erl` module provides functions to work with XMPP addresses (aka "JIDs").
+There are two common types of internal representation of JIDs:
+* `jid()`: a JID is represented by a record `#jid{}` defined in
+  [jid.hrl](https://github.com/processone/xmpp/blob/master/include/jid.hrl)
+* `ljid()`: a JID is represented by a tuple `{User, Server, Resource}` where
+  `User`, `Server` and `Resource` are stringprepped version of a nodepart,
+  namepart and resourcepart of a JID respectively. This representation is useful to
+  use for JIDs comparison and when a JID should be used as a key (in a Mnesia
+  database, ETS table, etc.)
+
 The most notable functions in this module are:
+
 * `decode(Input :: binary()) -> jid()`:
-  decodes binary data into `#jid{}` record. Fails with `{bad_jid, Input}` otherwise.
+  decodes binary data into `jid()`. Fails with `{bad_jid, Input}` otherwise.
 * `encode(JID :: jid() | ljid()) -> binary()`:
   encodes `JID` into binary data
 * `remove_resource(JID :: jid() | ljid()) -> jid() | ljid()`:
@@ -715,9 +725,9 @@ The most notable functions in this module are:
 * `replace_resource(JID :: jid() | ljid()) -> jid() | ljid()`:
   replaces resource part of a `JID`
 * `tolower(JID :: jid() | ljid()) -> ljid()`:
-  transforms `JID` into `ljid()`, i.e. into `{U, S, R}` format,
-  where `U`, `S` and `R` are stringprepped version of a nodepart,
-  namepart and resourcepart respectively.
+  transforms `JID` into `ljid()` representation
+* `make(LJID :: ljid()) -> jid()`:
+  transforms `LJID` into `jid()` representation
 
 Inspect exported functions of
 [jid.erl](https://github.com/processone/xmpp/blob/master/src/xmpp.erl)
