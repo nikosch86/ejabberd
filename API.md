@@ -270,12 +270,14 @@ Calling to other functions is not recommended.
 `#message{}`, `#presence{}` and full-JID `#iq{}` it looks up its
 internal table (aka `session` table) for the corresponding
 `ejabberd_c2s` process and, if the process is found, it routes the
-stanza to this process via `ejabberd_c2s:route/2` call. Bare-JID
-`#iq{}` stanzas are processed in a similar way as in
+stanza to this process via `ejabberd_c2s:route/2` call.
+
+Bare-JID `#iq{}` stanzas are processed in a similar way as in
 `ejabberd_local.erl`. The internal `session` table is backend-dependent
 and is implemented in the corresponding backend module:
-`ejabberd_sm_mnesia.erl`, `ejabberd_sm_redis.erl` and so on. The most
-notable functions in the module are:
+`ejabberd_sm_mnesia.erl`, `ejabberd_sm_redis.erl` and so on.
+
+The most notable functions of the module are:
 - `get_user_resources/2`
 - `dirty_get_sessions_list/0`
 - `dirty_get_my_sessions_list/0`
@@ -295,10 +297,10 @@ Any process can register a route to itself. It's done by calling to
 unregistered via `ejabberd_router:unregister_route/1` function if the
 registering process terminates or the route is no longer needed. Once a
 route is registered to a process, this process will receive Erlang
-messages in the form of `{route, Stanza}`. Note that `from` and `to` is
-always set in the `Stanza`, so it's safe to assume that
-`xmpp:get_from(Stanza)` and `xmpp:get_to(Stanza)` always return
-`#jid{}` and never `undefined`.
+messages in the form of `{route, Stanza}`.
+> **NOTE**: `from` and `to` fields are always set in the `Stanza`,
+> so it's safe to assume that `xmpp:get_from(Stanza)` and
+> `xmpp:get_to(Stanza)` always return `#jid{}` and never `undefined`.
 
 Refer to the code of `mod_muc.erl` or `ejabberd_service.erl` for an
 example of a route-registered process.
@@ -355,9 +357,10 @@ Once registered, matching `IQ` stanzas are handled by calling
 `Module:Function(IQ)`. The result should be in the form of `#iq{}` or
 `ignore`. When `#iq{}` is returned, it's treated as a reply and routed
 back to the IQ originator, otherwise, if `ignore` is returned, the
-further processing stops. Note that `from` and `to` is always set in
-the `IQ`, so it's safe to assume that `xmpp:get_from(IQ)` and
-`xmpp:get_to(IQ)` always return `#jid{}` and never `undefined`.
+further processing stops.
+> **NOTE**: `from` and `to` fields are always set in the `IQ`,
+> so it's safe to assume that `xmpp:get_from(IQ)` and
+> `xmpp:get_to(IQ)` always return `#jid{}` and never `undefined`.
 
 If a handler is no longer needed it should be unregistered as:
 ```erlang
