@@ -708,7 +708,7 @@ Inspect exported functions of
 The most notable functions in this module are:
 * `decode(Input :: binary()) -> jid()`:
   decodes binary data into `#jid{}` record. Fails with `{bad_jid, Input}` otherwise.
-* `encode/(JID :: jid() | ljid()) -> binary()`:
+* `encode(JID :: jid() | ljid()) -> binary()`:
   encodes `JID` into binary data
 * `remove_resource(JID :: jid() | ljid()) -> jid() | ljid()`:
   removes resource part of a `JID`
