@@ -93,7 +93,7 @@ macros](https://github.com/inaka/erlang_guidelines/blob/master/README.md#no-macr
 * [no
 case-catch](https://github.com/inaka/erlang_guidelines/blob/master/README.md#dont-use-case-catch)
 
-Its worth noting that the code itself should be indented using Emacs
+It's worth noting that the code itself should be indented using Emacs
 indentation style (that is the standard indentation style for Erlang
 programs). If you're not using Emacs for ejabberd development, indent
 the code using it first before making a PR/commit.
@@ -692,7 +692,7 @@ The most notable functions in this module are:
 * `jid:remove_resource/1`: removes resource part of a `#jid{}`
 * `jid:replace_resource/2`: replaces resource part of a `#jid{}`
 * `jid:tolower/1`: transforms `#jid{}` into `{U, S, R}` format, where
-`U`, `S` and `R` stringprepped version of a nodepart, namepart and resourcepart
+`U`, `S` and `R` are stringprepped version of a nodepart, namepart and resourcepart
 respectively.
 
 Inspect exported functions of
