@@ -257,11 +257,12 @@ for `#iq{}` it finds the corresponding "IQ handler" by looking up its
 internal table to find a correspondence between a namespace of IQ's
 child element and the handler. Once the handler (an erlang function) is
 found, it passes further IQ processing to `gen_iq_handler.erl` via
-`gen_iq_handler:handle/5` call. `ejabberd_local.erl` is also able to
-send IQ requests and to process responses for them. This is implemented
-in `ejabberd_local:route_iq/2,3` functions. This is also the most
-notable function of the module. Calling to other functions is not
-recommended.
+`gen_iq_handler:handle/5` call.
+
+`ejabberd_local.erl` is also able to send IQ requests and to process
+responses for them. This is implemented in `ejabberd_local:route_iq/2,3`
+functions. This is also the most notable function of the module.
+Calling to other functions is not recommended.
 
 #### ejabberd_sm
 
