@@ -730,6 +730,6 @@ The most notable functions in this module are:
   transforms `LJID` into `jid()` representation
 
 Inspect exported functions of
-[jid.erl](https://github.com/processone/xmpp/blob/master/src/xmpp.erl)
+[jid.erl](https://github.com/processone/xmpp/blob/master/src/jid.erl)
 for more details.
 
